@@ -1,12 +1,159 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
              x:Class="WevmusicLogin.Views.LoginView"
-             Title="LoginView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             NavigationPage.HasNavigationBar="False">
+
+    <!-- GRID PRINCIPAL: 30% cabecera / 70% controles -->
+    <Grid RowDefinitions="1*,1.7*">
+
+        <!-- ══════════════════════════════════════ -->
+        <!--         FILA 0 — CABECERA              -->
+        <!-- ══════════════════════════════════════ -->
+
+        <!-- Imagen de fondo musical -->
+        <Image Aspect="AspectFill"
+               Source="music_bg.png"
+               Grid.Row="0"/>
+
+        <!-- Capa morada semitransparente sobre la imagen -->
+        <Grid Grid.Row="0"
+              BackgroundColor="#CC6C3FC5"
+              Opacity="0.90"/>
+
+        <!-- Logo izquierda | Animación Lottie derecha -->
+        <Grid Grid.Row="0"
+              ColumnDefinitions="*,*">
+
+            <Image Aspect="AspectFit"
+                   HeightRequest="120"
+                   Source="app_logo.png"
+                   Grid.Column="0"/>
+
+            <skia:SKLottieView Grid.Column="1"
+                               HeightRequest="100"
+                               RepeatCount="-1"
+                               Source="music_animation.json"/>
+
+        </Grid>
+
+        <!-- ══════════════════════════════════════ -->
+        <!--     FILA 1 — SECCIÓN DE CONTROLES      -->
+        <!-- ══════════════════════════════════════ -->
+
+        <Grid Grid.Row="1">
+
+            <!-- Fondo blanco con bordes superiores redondeados -->
+            <RoundRectangle Margin="-5,-30,-5,-2"
+                            CornerRadius="30,30,0,0"
+                            Fill="White"/>
+
+            <!-- Contenedor principal de controles -->
+            <VerticalStackLayout Margin="30,0,30,0">
+
+                <!-- Título de bienvenida -->
+                <Label FontAttributes="Bold"
+                       FontFamily="Bold"
+                       FontSize="Medium"
+                       Text="Welcome Back"
+                       TextColor="#2D2D2D"
+                       Margin="0,30,0,0"/>
+
+                <!-- Subtítulo -->
+                <Label FontFamily="Medium"
+                       Text="Log in to continue listening"
+                       TextColor="#A3A3A4"/>
+
+                <!-- ─── Campo EMAIL ─── -->
+                <Grid Margin="0,20,0,0"
+                      ColumnDefinitions="0.2*,0.8*">
+
+                    <!-- Fondo del icono -->
+                    <RoundRectangle BackgroundColor="#EDE7F6"
+                                    CornerRadius="10"
+                                    HeightRequest="60"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60"
+                                    Grid.Column="0"/>
+
+                    <!-- Icono email -->
+                    <Image Source="icon_email.png"
+                           HeightRequest="28"
+                           WidthRequest="28"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Grid.Column="0"/>
+
+                    <!-- Campo de texto email -->
+                    <Entry Grid.Column="1"
+                           Placeholder="Email"
+                           Keyboard="Email"
+                           TextColor="Black"
+                           PlaceholderColor="#A3A3A4"
+                           VerticalOptions="Center"/>
+
+                </Grid>
+
+                <!-- ─── Campo PASSWORD ─── -->
+                <Grid Margin="0,10,0,0"
+                      ColumnDefinitions="0.2*,0.8*">
+
+                    <!-- Fondo del icono -->
+                    <RoundRectangle BackgroundColor="#EDE7F6"
+                                    CornerRadius="10"
+                                    HeightRequest="60"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60"
+                                    Grid.Column="0"/>
+
+                    <!-- Icono password -->
+                    <Image Source="icon_password.png"
+                           HeightRequest="28"
+                           WidthRequest="28"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Grid.Column="0"/>
+
+                    <!-- Campo de texto password -->
+                    <Entry Grid.Column="1"
+                           Placeholder="Password"
+                           IsPassword="True"
+                           TextColor="Black"
+                           PlaceholderColor="#A3A3A4"
+                           VerticalOptions="Center"/>
+
+                </Grid>
+
+                <!-- ─── Botón LOG IN ─── -->
+                <Button Margin="0,20,0,0"
+                        BackgroundColor="#6C3FC5"
+                        HeightRequest="60"
+                        Text="LOG IN"
+                        TextColor="#FFFFFF"
+                        CornerRadius="12"
+                        FontAttributes="Bold"/>
+
+                <!-- ─── Olvidé mi contraseña ─── -->
+                <Label Margin="0,10,0,-10"
+                       HorizontalOptions="Center"
+                       Text="Forgot your password?"
+                       TextColor="#6C3FC5"
+                       TextDecorations="Underline"/>
+
+                <!-- ─── Botón CREATE YOUR ACCOUNT ─── -->
+                <Button Margin="0,20,0,0"
+                        BackgroundColor="#F3EFFE"
+                        HeightRequest="60"
+                        Text="CREATE YOUR ACCOUNT"
+                        TextColor="#6C3FC5"
+                        CornerRadius="12"
+                        FontAttributes="Bold"/>
+
+            </VerticalStackLayout>
+        </Grid>
+
+    </Grid>
 </ContentPage>
