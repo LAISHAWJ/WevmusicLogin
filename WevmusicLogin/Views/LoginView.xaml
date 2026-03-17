@@ -27,7 +27,7 @@
               ColumnDefinitions="*,*">
 
             <Image Aspect="AspectFit"
-                   HeightRequest="150"
+                   HeightRequest="200"
                    Source="app_logo.png"
                    Grid.Column="0"/>
 
